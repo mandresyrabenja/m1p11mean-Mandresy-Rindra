@@ -20,7 +20,7 @@ async function sendVerificationEmail(user, req, res){
         const em = crpytR.encrypt(user.email)
 
         const verifyLink = process.env.PRODUCTION === "true" ? 
-            `https://${process.env.LOCAL_IP}${config.emailUrl}${token.token}`
+            `${process.env.PROD_URL}${config.emailUrl}${token.token}`
             : `http://${process.env.LOCAL_IP}:${process.env.PORT}${config.emailLocalUrl}${token.token}` 
 
         const emailOptions = {
